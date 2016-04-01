@@ -1,0 +1,6 @@
+Charley Room是我自己开发的一个能在线聊天的聊天室，
+基于Node.js的express库和socket.io，
+在开发中用到的工具包括bootstrap和jquery，
+此聊天室是我的毕业设计，
+现在将它放在git仓库中，
+希望大家能多多交流。
