@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Charley Room</title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/chatroom.css">
+	<link rel="stylesheet" href="/stylesheets/csshake-horizontal.css">
+	<link rel="stylesheet" href="/stylesheets/csshake-rotate.min.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+	<script src="/javascripts/jquery-1.10.2.min.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/charley_room.js"></script>
+    <style>
+		
+    </style>
+</head>
+<body>
+	<div id="mask">
+		<div class="holder">
+			<div id="setNickName" style="display:none">
+				<div class="alert alert-danger" id="warn_nickName" style="display:none;width:60%;padding-left:12px;">昵称已被占用！请重新输入</div>
+				<div class="placer" style="padding:30px"></div>
+				<form class="form-inline">
+					<input style="width:75%" type="text" class="form-control" id="nickName" placeholder="输入你想使用的昵称">
+					<button class="btn btn-primary" id="confirmNickName">确认昵称</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="outer">
+		<div class="row">
+			<div class="col-xs-3">
+				<div class="header">
+					<span>
+						当前在线<span id="user_count" style="margin-left:10px;margin-right:5px">0</span>
+					</span>人
+				</div>
+				<div class="center" style="overflow:auto">
+					<ul id="chatList" class="list-group">
+						
+					</ul>
+				</div>
+				<div class="footer" id="loginOut" style="cursor: pointer">注销当前用户</div>
+			</div>
+			
+			<div class="col-xs-8">
+				<div class="header">
+					<span>
+						Charley Room 在线聊天室
+					</span>
+				</div>
+				<div class="center">
+					<div  id="chatHouse" style="overflow:auto;height:100%;padding-top:15px"></div>
+					<div id="emojs" class="center-block emojs" style="display:none"></div>
+					<div id="sideBar">
+						<div id="clean" title="清屏" class="shake shake-rotate"></div>
+						<div id="shake" title="窗口抖动" class="shake shake-rotate"></div>
+						<div id="greeting" title="随机短语" class="shake shake-rotate"></div>
+					</div>
+				</div>
+				<div class="footer">
+					<form class="form-inline" id="sendMsg">
+						<input style="width:5%;font-weight:bold" type="button" value=":)" class="btn btn-default send_emojs">
+						<input id="msg" style="width:70%;" type="text" class="form-control">
+						<input style="width:10%;font-weight:bold" type="submit" class="btn btn-default" value="发送">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

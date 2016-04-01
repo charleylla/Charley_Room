@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>退出 Charley_Room</title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<script src="/javascripts/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+	<h3 style="padding:5px">你已退出 Charley Room！<a href="javascript:;" id="time"> 5 秒后返回首页</a></h3>
+	<script>
+		var time = 5;
+		var timer = setInterval(function(){
+			time --;
+			$("#time").html(time+" 秒后返回首页");
+			if(time == 0){
+				location.href = "/";
+				clearInterval(timer);
+			}
+		},1000);
+		$("#time").click(function(){
+			clearInterval(timer);
+			location.href="/";
+		});
+	</script>
+</body>
+</html>

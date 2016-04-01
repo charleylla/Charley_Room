@@ -1,0 +1,42 @@
+*{
+			font-family: "微软雅黑" !important;
+		}
+		.container{
+			text-align: center
+		}
+		.roomname{
+			text-align: center;
+			padding-top:100px;
+			font-size:4.5em;
+		}
+		.roomname~p{
+			text-align:center;
+			margin-top:50px;
+			font-family: "微软雅黑";
+		}	
+		.circle{
+			width:180px;
+			height:180px;
+			background:green;
+			cursor: pointer;
+			margin-top:50px;
+			border-radius:90px 25px 90px 25px;
+			text-align: center;
+			color:#fff !important;
+			font:5em/180px Arial;
+			transition:all 0.8s ease;
+			text-decoration: none !important;
+		}
+		.circle:hover{
+			transform:rotate(360deg);
+		}
+		.circle~a{
+			cursor:pointer;
+			margin-top:50px;
+			width:150px;
+			display:block;
+			font-size:2em;
+			font-family: "微软雅黑";
+			color:#82bdee;
+			border-radius:5px;
+		}

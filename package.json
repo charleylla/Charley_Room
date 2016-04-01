@@ -1,0 +1,25 @@
+{
+  "name": "Charley_Room",
+  "version": "1.5.5",
+  "descriptions":"[
+      1.优化了首页的脚本文件
+      2.侧边栏的三个小图标增加了抖动效果
+  ]",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "ejs": "~2.3.3",
+    "express": "~4.13.1",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0",
+    "mongoose":">=2.6.5",
+    "multer": "0.1.6",
+    "express-session": "~1.12.1",
+    "socket.io":"*"
+  }
+}

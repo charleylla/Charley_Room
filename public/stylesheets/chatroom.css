@@ -1,0 +1,185 @@
+*{
+	font-family: "微软雅黑" !important;
+}
+.outer{
+	padding-top:100px;
+	width:65%;
+	margin:0 auto;
+}
+.row>div{
+	/*border:1px solid #2e6da4;*/
+	height:700px;
+	border-radius:5px;
+	padding:0;
+}
+.row>div:nth-of-type(2){
+	margin-left:20px;
+}
+.row>div{
+	position: relative;
+}
+.row>div .header,.row>div .footer{
+	height:50px;
+	border-radius:5px 5px 0 0;
+	/*background:-webkit-linear-gradient(to top,#487AB7,#127AB7);*/
+	background:#44cef6;
+	width:100%;
+	font:18px/50px "微软雅黑";
+	color:#fff;
+	text-align:center;
+}
+.row>div .footer{
+	border-radius:0 0 5px 5px;
+	position: absolute;
+	bottom: 0;
+	left:0;
+}
+.row>div .center{
+	position: relative;
+	height:600px;
+	border:1px solid #44cef6;
+}
+#emojs{
+	position: absolute;
+	z-index:1000;
+	left:0.5%;
+	bottom:2px;
+	width:99%;
+	/*height:270px;*/
+	background: #f8f8f8;
+	border-radius: 5px;
+	padding-left:13px;
+	padding-top:7px;
+	border:2px solid #487AB7;
+}
+#emojs img{
+	width:52px;
+	height:50px;
+	margin:5px;
+	cursor:pointer;
+}
+#emojs img:hover{
+	border:3px solid #127AB7;
+	border-radius:3px;
+}
+#mask{
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	background:#2e6da4;
+	z-index:2000;
+	opacity:0.6;
+}
+#mask{
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	background:rgba(46,109,164,0.5);
+	z-index:2000;
+}
+.holder{
+	position: absolute;
+	left:50%;
+	top:50%;
+	width:400px;
+	height:100px;
+	margin-left:-150px;
+	margin-top:-100px;
+	background:url("/images/loding.gif") no-repeat center center;
+	background-size:contain;
+}
+#warn_nickName{
+	position:absolute;
+	top:0;
+}
+#chatList li{
+	cursor:pointer;
+	padding:14px 15px;
+	text-overflow:ellipsis; 
+	overflow:hidden; 
+	white-space:nowrap; 
+	transition: 0.5s all ease-in-out;
+}
+#chatList li:hover{
+	background-color:rgba(68,206,246,0.5);
+	font-size:1.5em;
+}
+
+.msg_container{
+	position: relative;
+	font-size:1.5em;
+	margin:0 15px 10px;
+}
+.msg_container .user{
+	font-size:18px;
+	color:#333;
+}
+.msg_container .msg{
+	display:inline-block;
+	border-radius:5px;
+	padding:5px;
+	max-width:550px;
+	min-width:10px;
+	word-wrap:break-word;
+}
+.right{
+	float:right;
+}
+.right .user{
+	float:right;
+}
+.right .msg{
+	float:right;
+}
+/*somebody已加入聊天的宽度限制*/
+#user_attend_in_out{
+	max-width:70%;
+	text-align:center;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+#user_attend_in_out #userName{
+	display:inline-block;
+	line-height:11px;
+	max-width:70%;
+	text-overflow:ellipsis; 
+	overflow:hidden; 
+	white-space:nowrap;
+	padding:1px;
+	padding-right:3px;
+}
+/*为联系人添加头像和背景渐变效果*/
+.list-group-item{
+    background:url("/images/person.ico") no-repeat left center;
+    background-size:25px;
+    padding-left:40px !important;
+}
+/*侧边栏样式*/
+#sideBar{
+	width:55px;
+	position:absolute;
+	right:-73px;
+	bottom:-17px;
+}
+#sideBar>div{
+	width:55px;
+	height:55px;
+	margin-bottom:12px;
+	cursor:pointer;
+}
+#sideBar>div:nth-of-type(1){
+	background:url("/images/clean.ico") no-repeat center center;
+	background-size:contain;
+}
+#sideBar>div:nth-of-type(2){
+	background:url("/images/shake.ico") no-repeat center center;
+	background-size:contain;
+}
+#sideBar>div:nth-of-type(3){
+	background:url("/images/greeting.ico") no-repeat center center;
+	background-size:contain;
+}
