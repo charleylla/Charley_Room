@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 // 引入加密的模块
 var crypto = require('crypto');
-var USER = {};
-var IS_LOGIN = false;
 /* GET home page. */
 /* GET index page. */
 router.get('/', function(req, res,next) {
@@ -32,10 +30,6 @@ router.post('/', function(req, res) {
           //信息匹配成功，则将此对象（匹配到的user) 赋给session.user  并返回成功
           req.session.user = doc;
           res.sendStatus(200);
-          // var transfer = new Object();
-          // transfer.user = doc.name;
-          // res.redirect("/chatroom",{user:transfer.user});
-          IS_LOGIN = true;
         }
       }
   });
@@ -68,22 +62,20 @@ router.post('/', function(req, res) {
 });
 
 router.get('/chatroom?', function(req,res,next) {
-	if(IS_LOGIN){
-		// 是否需要在这里使用cookie
-		if(req.session.user){
-			res.render('chatroom');
-		}else{
-			res.render("chatroom")
-		}
-	}
-	else{
-		res.render('index');
-	}
+    if(req.session.user){
+      res.render("chatroom",{user:req.session.user.name});
+    }else{
+      req.session.null = null;
+      res.redirect("/unLogin");
+    }
 });
 
 // 退出登陆后不允许再次进入聊天室 IS_LOGIN的值为false
 router.get("/loginOut",function(req,res){
-	IS_LOGIN = false;
+  req.session.null = null;
 	res.render("loginOut");
+});
+router.get("/unLogin",function(req,res){
+  res.render("unLogin");
 });
 module.exports = router;

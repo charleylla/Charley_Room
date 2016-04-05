@@ -19,18 +19,7 @@
     </style>
 </head>
 <body>
-	<div id="mask">
-		<div class="holder">
-			<div id="setNickName" style="display:none">
-				<div class="alert alert-danger" id="warn_nickName" style="display:none;width:60%;padding-left:12px;">昵称已被占用！请重新输入</div>
-				<div class="placer" style="padding:30px"></div>
-				<form class="form-inline">
-					<input style="width:75%" type="text" class="form-control" id="nickName" placeholder="输入你想使用的昵称">
-					<button class="btn btn-primary" id="confirmNickName">确认昵称</button>
-				</form>
-			</div>
-		</div>
-	</div>
+	<input type="text" id="CURRENT_USER" value=<%= user%> hidden>
 	<div class="outer">
 		<div class="row">
 			<div class="col-xs-3">

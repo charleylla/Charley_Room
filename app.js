@@ -13,20 +13,24 @@ var io = require("socket.io").listen(server);
 
 var USERS = {};
 
+app.use(session({ 
+    secret: 'Charley',
+    cookie:{ 
+        maxAge: 1000*60*30
+    }
+}));
+
+// 通信
 io.sockets.on("connection",function(socket){
   var nickName = "";
   socket.on("login",function(nickName){
     nickName = nickName;
-    if(USERS[nickName]){
-      socket.emit("nickNameExited");
-    }else{
-      USERS[nickName] = nickName;
-      socket.userIndex = nickName;
-      socket.emit("loginSuccess",nickName);
-      io.sockets.emit("system",nickName,USERS);
-    }
+    USERS[nickName] = nickName;
+    socket.userIndex = nickName;
+    socket.emit("loginSuccess",nickName);
+    io.sockets.emit("system",nickName,USERS);
   });
-  socket.on("disconnect",function(){
+  socket.on("someone_leave",function(){
     delete USERS[socket.userIndex];
     socket.broadcast.emit("loginOut",socket.userIndex,USERS);
   });
@@ -63,18 +67,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 app.use(cookieParser());
 
-app.use(session({ 
-    secret: 'secret',
-    cookie:{ 
-        maxAge: 1000*60*30
-    }
-}));
+
 
 app.use(function(req,res,next){ 
   res.locals.user = req.session.user;
   var err = req.session.error;
   delete req.session.error;
   res.locals.message = "";
+  if(err){
+    res.locals.message = '<div class="alert alert-danger" style="margin-bottom:20px;color:red;">'+err+'</div>';
+  }
   next();
 });
 
@@ -82,6 +84,9 @@ app.use(function(req,res,next){
 app.use("/", routes);
 // 使用 "/" 访问调用routes下的index文件（默认）
 app.use("/chatroom",routes);
+app.use("/unLogin",routes);
+// app.use("/chatroom",routes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

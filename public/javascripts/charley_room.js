@@ -59,31 +59,12 @@ $(function(){
 		init:function(){
 			// 这是一个坑
 			var that = this;
-			var me = "";
+			var me = $("#CURRENT_USER").val();
 			// 建立到服务器的socket链接
 			this.socket = io.connect();
 			// 监听socket的connect事件
 			this.socket.on("connect",function(){
-				$(".holder").css("background","none");
-				$("#setNickName").show();
-				$("#nickName").focus();
-			});
-			$("#confirmNickName").click(function(){
-				var nickName = $("#nickName").val().trim();
-				if(nickName){
-					that.socket.emit("login",nickName);
-					console.log(nickName)
-				}else{
-					$("#warn_nickName").html("昵称不能为空！").show("fast");
-				}
-				return false;
-			});
-			this.socket.on("nickNameExited",function(){
-				$("#warn_nickName").html("昵称已存在！").show("fast");
-			});
-			this.socket.on("loginSuccess",function(data){
-				$("#mask").hide();
-				me = data;
+				that.socket.emit("login",me);
 			});
 			this.socket.on("loginOut",function(userName,USERS){
 				// 解决在服务器断开连接后提示 null一退出的bug
@@ -190,11 +171,17 @@ $(function(){
 			});	
 			// 注销当前账号
 			$("#loginOut").click(function(){
+				that.socket.emit("someone_leave");
 				$.ajax({
 					url:"/loginOut",
 					type:"get",
 				});
 				location.href="/loginOut";
+			});
+			// 关闭窗口
+			$(window).unload(function(){
+				that.socket.emit("someone_leave");
+				// location.href="/loginOut";
 			});
 			// 窗口抖动
 			this.socket.on("shake",function(){
@@ -216,6 +203,7 @@ $(function(){
 				var greeting = that.greetings[Math.round(Math.random()*that.greetings.length)];
 				$("#msg").val(greeting);
 			});
+
 		}
 	};
 	CharleyRoom.prototype.constructor = CharleyRoom;
